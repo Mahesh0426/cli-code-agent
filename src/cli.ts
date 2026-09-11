@@ -3,6 +3,17 @@ import { printBanner } from "./ui/banner.js";
 import { requireApiKey } from "./config/env.js";
 import chalk from "chalk";
 import { runQuery } from "./agent/run-query.js";
+import { wakeUp } from "./commands/wake-up.js";
+import { startChat } from "./commands/chats.js";
+import { CliMode, parseCliMode } from "./agent/modes.js";
+
+function parseMode(value: string): CliMode {
+  const mode = parseCliMode(value);
+  if (!mode) {
+    throw new Error(`Invalid mode "${value}". Use agent, ask, or plan.`);
+  }
+  return mode;
+}
 
 export function createCli() {
   const program = new Command()
@@ -23,6 +34,16 @@ export function createCli() {
     .description("Banner, preflight, mode picker, then chat")
     .action(async () => {
       await wakeUp();
+    });
+
+  program
+    .command("chat")
+    .description("Interactive streaming chat session")
+    .option("-m, --mode <mode>", "agent | ask | plan", "agent")
+    .option("-v, --verbose", "Show agent loop message types", false)
+    .action(async (opts: { mode: string; verbose: boolean }) => {
+      requireApiKey();
+      await startChat({ mode: parseMode(opts.mode), verbose: opts.verbose });
     });
 
   //Banner command - it shows welcome banner with cursor name
