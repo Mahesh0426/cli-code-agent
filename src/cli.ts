@@ -18,6 +18,13 @@ export function createCli() {
       console.log("hello world");
     });
 
+  program
+    .command("wakeup")
+    .description("Banner, preflight, mode picker, then chat")
+    .action(async () => {
+      await wakeUp();
+    });
+
   //Banner command - it shows welcome banner with cursor name
   program
     .command("banner")
