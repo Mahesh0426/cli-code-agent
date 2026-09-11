@@ -2,6 +2,7 @@ import { Command } from "commander";
 import { printBanner } from "./ui/banner.js";
 import { requireApiKey } from "./config/env.js";
 import chalk from "chalk";
+import { runQuery } from "./agent/run-query.js";
 
 export function createCli() {
   const program = new Command()
@@ -42,6 +43,16 @@ export function createCli() {
       }
       console.log(chalk.green("✅ Node.js is >= 18"));
       console.log(chalk.green("✅ Anthropic API key is set"));
+    });
+
+  program
+    .command("talk")
+    .description("Send a one-shot prompt to the agent.")
+    .argument("<prompt>", "prompt to send to the agent")
+    .option("-v, --verbose", "shows verbose output")
+    .action(async (prompt: string, opts: { verbose?: boolean }) => {
+      requireApiKey();
+      await runQuery(prompt, { verbose: opts.verbose });
     });
 
   program.action(() => {
