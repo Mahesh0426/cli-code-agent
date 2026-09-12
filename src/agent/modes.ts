@@ -24,6 +24,14 @@ export function cliModeToPermissionMode(mode: CliMode): PermissionMode {
   }
 }
 
+export function buildChatSessionOptions(mode: CliMode): Options {
+  return {
+    ...BASE_OPTIONS,
+    permissionMode: cliModeToPermissionMode(mode),
+    allowedTools: [...AGENT_TOOLS],
+  };
+}
+
 export function buildModeOptions(mode: CliMode): Options {
   switch (mode) {
     case "agent":

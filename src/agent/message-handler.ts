@@ -54,7 +54,6 @@ export function handleMessage(
   }
   switch (message.type) {
     case "system": {
-      startSpinner("Thinking...");
       if (message.subtype === "init") {
         console.log(
           fmt.system(
@@ -68,6 +67,7 @@ export function handleMessage(
     }
 
     case "assistant": {
+      stopSpinner();
       const content = message.message.content;
       const text = contentToString(content);
       const tools = extractToolNames(content);
