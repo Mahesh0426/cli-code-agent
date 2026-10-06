@@ -2,7 +2,7 @@
 
 # Claude Code CLI Agent
 
-**A terminal-native AI coding assistant powered by the Anthropic Claude Agent SDK**
+**An open-source, terminal-native AI coding assistant — inspired by [Claude Code](https://docs.anthropic.com/en/docs/claude-code), powered by the [Anthropic Claude Agent SDK](https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk)**
 
 [![Node.js](https://img.shields.io/badge/Node.js-≥18-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-7.0-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -19,7 +19,7 @@ Read, edit, execute, and plan — directly from your terminal.
 
 ## Overview
 
-**Claude Code CLI Agent** (`cursor-cli`) is an interactive terminal-based coding assistant built with TypeScript and the official [Anthropic Claude Agent SDK](https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk). It brings autonomous agent capabilities — file reading, code editing, shell execution, web search, and architectural planning — into a streaming conversational interface you control from the command line.
+**Claude Code CLI Agent** (`cursor-cli`) is an interactive terminal-based coding assistant built with TypeScript and the official [Anthropic Claude Agent SDK](https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk). Inspired by the workflow and capabilities of [Claude Code](https://docs.anthropic.com/en/docs/claude-code), it brings autonomous agent capabilities — file reading, code editing, shell execution, web search, and architectural planning — into a streaming conversational interface you control from the command line.
 
 Think of it as your pair-programming partner that lives in the terminal: ask it to explain code, refactor modules, draft architecture plans, or execute commands — all through natural language.
 
@@ -37,11 +37,11 @@ Think of it as your pair-programming partner that lives in the terminal: ask it 
 
 Three distinct modes with granular permission control:
 
-| Mode | Description | What It Can Do |
-|:-----|:------------|:---------------|
-| `agent` | Full coding assistant | Read, edit, write files & run shell commands |
-| `ask` | Safe exploration | Read files, search the web — **no modifications** |
-| `plan` | Architecture & planning | Gather context, propose solutions — **no edits applied** |
+| Mode    | Description             | What It Can Do                                           |
+| :------ | :---------------------- | :------------------------------------------------------- |
+| `agent` | Full coding assistant   | Read, edit, write files & run shell commands             |
+| `ask`   | Safe exploration        | Read files, search the web — **no modifications**        |
+| `plan`  | Architecture & planning | Gather context, propose solutions — **no edits applied** |
 
 ### In-Session Controls
 
@@ -66,11 +66,11 @@ Switch behaviors on the fly with slash commands during any chat session:
 
 ### Prerequisites
 
-| Requirement | Version |
-|:------------|:--------|
-| [Node.js](https://nodejs.org/) | `≥ 18.0.0` |
-| Package Manager | [pnpm](https://pnpm.io/) (recommended) / npm / yarn |
-| [Anthropic API Key](https://console.anthropic.com/) | Active key with Claude model access |
+| Requirement                                         | Version                                             |
+| :-------------------------------------------------- | :-------------------------------------------------- |
+| [Node.js](https://nodejs.org/)                      | `≥ 18.0.0`                                          |
+| Package Manager                                     | [pnpm](https://pnpm.io/) (recommended) / npm / yarn |
+| [Anthropic API Key](https://console.anthropic.com/) | Active key with Claude model access                 |
 
 ### Installation
 
@@ -224,30 +224,30 @@ claude-code-cli-agent/
 
 ## 🧰 Tech Stack
 
-| Category | Technology | Purpose |
-|:---------|:-----------|:--------|
-| **Runtime** | [Node.js](https://nodejs.org/) `≥ 18` | JavaScript runtime |
-| **Language** | [TypeScript](https://www.typescriptlang.org/) `7.0` | Type-safe development with ES module syntax |
-| **AI** | [@anthropic-ai/claude-agent-sdk](https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk) | Autonomous agent loops, tool usage & permissions |
-| **CLI Framework** | [Commander.js](https://github.com/tj/commander.js) | Command parsing & routing |
-| **Prompts** | [@inquirer/prompts](https://github.com/SBoudrias/Inquirer.js) | Interactive select menus & input prompts |
-| **Styling** | [Chalk](https://github.com/chalk/chalk) + [Boxen](https://github.com/sindresorhus/boxen) | Terminal colors & boxed layouts |
-| **Banner** | [Figlet](https://github.com/patorjk/figlet.js) | ASCII text art generation |
-| **Spinner** | [Ora](https://github.com/sindresorhus/ora) | Elegant loading indicators |
-| **Process** | [Execa](https://github.com/sindresorhus/execa) | Subprocess execution |
-| **Dev** | [tsx](https://github.com/privatenumber/tsx) | Fast TypeScript execution & watch mode |
-| **Env** | [dotenv](https://github.com/motdotla/dotenv) | `.env` file loading |
+| Category          | Technology                                                                                     | Purpose                                          |
+| :---------------- | :--------------------------------------------------------------------------------------------- | :----------------------------------------------- |
+| **Runtime**       | [Node.js](https://nodejs.org/) `≥ 18`                                                          | JavaScript runtime                               |
+| **Language**      | [TypeScript](https://www.typescriptlang.org/) `7.0`                                            | Type-safe development with ES module syntax      |
+| **AI**            | [@anthropic-ai/claude-agent-sdk](https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk) | Autonomous agent loops, tool usage & permissions |
+| **CLI Framework** | [Commander.js](https://github.com/tj/commander.js)                                             | Command parsing & routing                        |
+| **Prompts**       | [@inquirer/prompts](https://github.com/SBoudrias/Inquirer.js)                                  | Interactive select menus & input prompts         |
+| **Styling**       | [Chalk](https://github.com/chalk/chalk) + [Boxen](https://github.com/sindresorhus/boxen)       | Terminal colors & boxed layouts                  |
+| **Banner**        | [Figlet](https://github.com/patorjk/figlet.js)                                                 | ASCII text art generation                        |
+| **Spinner**       | [Ora](https://github.com/sindresorhus/ora)                                                     | Elegant loading indicators                       |
+| **Process**       | [Execa](https://github.com/sindresorhus/execa)                                                 | Subprocess execution                             |
+| **Dev**           | [tsx](https://github.com/privatenumber/tsx)                                                    | Fast TypeScript execution & watch mode           |
+| **Env**           | [dotenv](https://github.com/motdotla/dotenv)                                                   | `.env` file loading                              |
 
 ---
 
 ## 📝 Scripts Reference
 
-| Command | Description |
-|:--------|:------------|
-| `pnpm dev <command>` | Run the CLI in development mode via `tsx` |
-| `pnpm dev:watch` | Development mode with hot-reloading on file changes |
-| `pnpm build` | Compile TypeScript to JavaScript (`src/` → `dist/`) |
-| `pnpm start` | Run the compiled production build (`dist/index.js`) |
+| Command              | Description                                         |
+| :------------------- | :-------------------------------------------------- |
+| `pnpm dev <command>` | Run the CLI in development mode via `tsx`           |
+| `pnpm dev:watch`     | Development mode with hot-reloading on file changes |
+| `pnpm build`         | Compile TypeScript to JavaScript (`src/` → `dist/`) |
+| `pnpm start`         | Run the compiled production build (`dist/index.js`) |
 
 ### Building for Production
 
@@ -279,8 +279,14 @@ This project is licensed under the [ISC License](LICENSE).
 
 ---
 
+## 🙏 Acknowledgements
+
+This project is **inspired by [Claude Code](https://docs.anthropic.com/en/docs/claude-code)** — Anthropic's official agentic coding tool. It is built using the publicly available [Anthropic Claude Agent SDK](https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk) to provide a similar terminal-based agentic coding experience as an independent, open-source project.
+
+---
+
 <div align="center">
 
-Built with ❤️ using the [Anthropic Claude Agent SDK](https://docs.anthropic.com/)
+Built with ❤️ by [Mahesh Kunwar](https://github.com/Mahesh0426) · Inspired by [Claude Code](https://docs.anthropic.com/en/docs/claude-code) · Powered by the [Anthropic Claude Agent SDK](https://docs.anthropic.com/)
 
 </div>
